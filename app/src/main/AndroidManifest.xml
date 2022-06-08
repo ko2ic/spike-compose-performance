@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ko2ic.spike">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Spikecomposeperformance">
+        <activity
+            android:name=".ui.controller.MyAdapterWithComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.MyAdapterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.GroupieWithComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.GroupieActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.RecyclerViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.RecyclerViewWithComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
+            android:name=".ui.controller.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Spikecomposeperformance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
