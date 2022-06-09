@@ -11,7 +11,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ko2ic.spike.ui.theme.Purple200
-import com.ko2ic.spike.ui.theme.Purple500
 import com.ko2ic.spike.ui.viewmodel.MyItemViewModel
 
 @Composable
@@ -32,5 +31,5 @@ fun ComposeListItemView(item: Item) {
 
 @Composable
 fun ComposeListItemViewModel(itemViewModel: MyItemViewModel) {
-  ComposeListItemView(Item(itemViewModel.title,itemViewModel.description))
+  ComposeListItemView(Item(itemViewModel.title, itemViewModel.description))
 }

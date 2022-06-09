@@ -52,6 +52,12 @@ class MainActivity : ComponentActivity() {
         Text(text = "RecyclerView with ComposeView", fontSize = 12.sp)
       }
       Button(onClick = {
+        startActivity(RecyclerViewWithPoolingComposeActivity.intent(this@MainActivity))
+      }) {
+        Text(text = "RecyclerView with PoolingContainer ComposeView", fontSize = 12.sp)
+      }
+
+      Button(onClick = {
         startActivity(GroupieActivity.intent(this@MainActivity))
       }) {
         Text(text = "Groupie")

@@ -4,24 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ko2ic.spike.ComposeListItemView
 import com.ko2ic.spike.Item
 import com.ko2ic.spike.R
 import com.ko2ic.spike.databinding.FragmentRecyclerViewBinding
 import com.ko2ic.spike.databinding.ListItemViewBinding
+import com.ko2ic.spike.databinding.ListItemViewComposeBinding
+import com.ko2ic.spike.databinding.ListItemViewComposePoolingBinding
+import com.ko2ic.spike.ui.view.ComposeViewListItemView
 import com.ko2ic.spike.ui.viewmodel.MyViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class RecyclerViewFragment : Fragment(R.layout.fragment_recycler_view) {
+class RecyclerViewWithPoolingComposeFragment : Fragment(R.layout.fragment_recycler_view) {
 
   companion object {
-    fun newInstance() = RecyclerViewFragment()
+    fun newInstance() = RecyclerViewWithPoolingComposeFragment()
   }
 
   private lateinit var viewModel: MyViewModel
@@ -37,8 +43,8 @@ class RecyclerViewFragment : Fragment(R.layout.fragment_recycler_view) {
     binding.viewModel = viewModel
     binding.lifecycleOwner = viewLifecycleOwner
     binding.recyclerView.apply {
-      layoutManager = LinearLayoutManager(this@RecyclerViewFragment.context)
-      adapter = RecyclerViewAdapter(viewModel.list)
+      layoutManager = LinearLayoutManager(this@RecyclerViewWithPoolingComposeFragment.context)
+      adapter = RecyclerViewWithPoolingComposeAdapter(viewModel.list)
     }
   }
 
@@ -48,17 +54,17 @@ class RecyclerViewFragment : Fragment(R.layout.fragment_recycler_view) {
   }
 }
 
-class RecyclerViewAdapter(private val listItems: List<Item>) :
-  RecyclerView.Adapter<ItemViewHolder>() {
+class RecyclerViewWithPoolingComposeAdapter(private val listItems: List<Item>) :
+  RecyclerView.Adapter<PoolingComposeItemViewHolder>() {
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-    val binding = ListItemViewBinding.inflate(
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PoolingComposeItemViewHolder {
+    val binding = ListItemViewComposePoolingBinding.inflate(
       LayoutInflater.from(parent.context), parent, false
     )
-    return ItemViewHolder(binding)
+    return PoolingComposeItemViewHolder(binding)
   }
 
-  override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: PoolingComposeItemViewHolder, position: Int) {
     holder.bindView(listItems[position])
   }
 
@@ -67,11 +73,13 @@ class RecyclerViewAdapter(private val listItems: List<Item>) :
   }
 }
 
-class ItemViewHolder(private val viewBinding: ListItemViewBinding) :
-  RecyclerView.ViewHolder(viewBinding.root) {
+class PoolingComposeItemViewHolder(
+  viewBinding: ListItemViewComposePoolingBinding
+) : RecyclerView.ViewHolder(viewBinding.root) {
+  private val listItemView: ComposeViewListItemView = viewBinding.composeViewPooling
+
   fun bindView(content: Item) {
-    viewBinding.title.text = content.title
-    viewBinding.description.text = content.description
+    listItemView.item = content
   }
 }
 

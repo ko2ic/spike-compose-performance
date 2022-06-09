@@ -40,6 +40,11 @@
             android:label="@string/title_activity_recycler_view"
             android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
         <activity
+            android:name=".ui.controller.RecyclerViewWithPoolingComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.Spikecomposeperformance.NoActionBar" />
+        <activity
             android:name=".ui.controller.ComposeActivity"
             android:exported="false"
             android:label="@string/title_activity_recycler_view"
